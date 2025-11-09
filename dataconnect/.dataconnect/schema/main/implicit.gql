@@ -1,0 +1,54 @@
+extend type Listing {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Listing", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Listing`.`textbook`. It must match the value of `Textbook`.`id`. See `@ref` for how to customize it.
+  """
+  textbookId: UUID! @fdc_generated(from: "Listing.textbook", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Listing`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: UUID! @fdc_generated(from: "Listing.user", purpose: IMPLICIT_REF_FIELD)
+}
+extend type SwapOffer {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "SwapOffer", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `SwapOffer`.`initiator`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  initiatorId: UUID! @fdc_generated(from: "SwapOffer.initiator", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `SwapOffer`.`recipient`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  recipientId: UUID! @fdc_generated(from: "SwapOffer.recipient", purpose: IMPLICIT_REF_FIELD)
+}
+extend type SwapOfferItem {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "SwapOfferItem", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `SwapOfferItem`.`listing`. It must match the value of `Listing`.`id`. See `@ref` for how to customize it.
+  """
+  listingId: UUID! @fdc_generated(from: "SwapOfferItem.listing", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `SwapOfferItem`.`swapOffer`. It must match the value of `SwapOffer`.`id`. See `@ref` for how to customize it.
+  """
+  swapOfferId: UUID! @fdc_generated(from: "SwapOfferItem.swapOffer", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Textbook {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Textbook", purpose: IMPLICIT_KEY_FIELD)
+}
+extend type User {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "User", purpose: IMPLICIT_KEY_FIELD)
+}

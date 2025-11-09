@@ -1,0 +1,562 @@
+extend type Mutation {
+  """
+  ✨ Insert a single `Listing` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  listing_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Listing_Data!
+  ): Listing_KeyOutput! @fdc_generated(from: "Listing", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `SwapOffer` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  swapOffer_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: SwapOffer_Data!
+  ): SwapOffer_KeyOutput! @fdc_generated(from: "SwapOffer", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `SwapOfferItem` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  swapOfferItem_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: SwapOfferItem_Data!
+  ): SwapOfferItem_KeyOutput! @fdc_generated(from: "SwapOfferItem", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Textbook` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  textbook_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Textbook_Data!
+  ): Textbook_KeyOutput! @fdc_generated(from: "Textbook", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `User` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert `Listing` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  listing_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Listing_Data!]!
+  ): [Listing_KeyOutput!]! @fdc_generated(from: "Listing", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `SwapOffer` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  swapOffer_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [SwapOffer_Data!]!
+  ): [SwapOffer_KeyOutput!]! @fdc_generated(from: "SwapOffer", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `SwapOfferItem` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  swapOfferItem_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [SwapOfferItem_Data!]!
+  ): [SwapOfferItem_KeyOutput!]! @fdc_generated(from: "SwapOfferItem", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Textbook` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  textbook_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Textbook_Data!]!
+  ): [Textbook_KeyOutput!]! @fdc_generated(from: "Textbook", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `User` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert or update a single `Listing` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Listing`.
+  """
+  listing_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Listing_Data!
+  ): Listing_KeyOutput! @fdc_generated(from: "Listing", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `SwapOffer` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `SwapOffer`.
+  """
+  swapOffer_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: SwapOffer_Data!
+  ): SwapOffer_KeyOutput! @fdc_generated(from: "SwapOffer", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `SwapOfferItem` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `SwapOfferItem`.
+  """
+  swapOfferItem_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: SwapOfferItem_Data!
+  ): SwapOfferItem_KeyOutput! @fdc_generated(from: "SwapOfferItem", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Textbook` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Textbook`.
+  """
+  textbook_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Textbook_Data!
+  ): Textbook_KeyOutput! @fdc_generated(from: "Textbook", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `User` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update `Listing` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Listing`.
+  """
+  listing_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Listing_Data!]!
+  ): [Listing_KeyOutput!]! @fdc_generated(from: "Listing", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `SwapOffer` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `SwapOffer`.
+  """
+  swapOffer_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [SwapOffer_Data!]!
+  ): [SwapOffer_KeyOutput!]! @fdc_generated(from: "SwapOffer", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `SwapOfferItem` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `SwapOfferItem`.
+  """
+  swapOfferItem_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [SwapOfferItem_Data!]!
+  ): [SwapOfferItem_KeyOutput!]! @fdc_generated(from: "SwapOfferItem", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Textbook` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Textbook`.
+  """
+  textbook_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Textbook_Data!]!
+  ): [Textbook_KeyOutput!]! @fdc_generated(from: "Textbook", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `User` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Update a single `Listing` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Listing` or `null` if not found.
+  """
+  listing_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Listing_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Listing_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Listing_Data!
+  ): Listing_KeyOutput @fdc_generated(from: "Listing", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `SwapOffer` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `SwapOffer` or `null` if not found.
+  """
+  swapOffer_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: SwapOffer_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: SwapOffer_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: SwapOffer_Data!
+  ): SwapOffer_KeyOutput @fdc_generated(from: "SwapOffer", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `SwapOfferItem` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `SwapOfferItem` or `null` if not found.
+  """
+  swapOfferItem_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: SwapOfferItem_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: SwapOfferItem_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: SwapOfferItem_Data!
+  ): SwapOfferItem_KeyOutput @fdc_generated(from: "SwapOfferItem", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Textbook` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Textbook` or `null` if not found.
+  """
+  textbook_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Textbook_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Textbook_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Textbook_Data!
+  ): Textbook_KeyOutput @fdc_generated(from: "Textbook", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `User` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `User` or `null` if not found.
+  """
+  user_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: User_Data!
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update `Listing` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  listing_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Listing_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Listing_Data!
+  ): Int! @fdc_generated(from: "Listing", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `SwapOffer` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  swapOffer_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: SwapOffer_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: SwapOffer_Data!
+  ): Int! @fdc_generated(from: "SwapOffer", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `SwapOfferItem` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  swapOfferItem_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: SwapOfferItem_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: SwapOfferItem_Data!
+  ): Int! @fdc_generated(from: "SwapOfferItem", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Textbook` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  textbook_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Textbook_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Textbook_Data!
+  ): Int! @fdc_generated(from: "Textbook", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `User` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  user_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: User_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: User_Data!
+  ): Int! @fdc_generated(from: "User", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Delete a single `Listing` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  listing_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Listing_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Listing_FirstRow
+  ): Listing_KeyOutput @fdc_generated(from: "Listing", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `SwapOffer` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  swapOffer_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: SwapOffer_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: SwapOffer_FirstRow
+  ): SwapOffer_KeyOutput @fdc_generated(from: "SwapOffer", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `SwapOfferItem` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  swapOfferItem_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: SwapOfferItem_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: SwapOfferItem_FirstRow
+  ): SwapOfferItem_KeyOutput @fdc_generated(from: "SwapOfferItem", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Textbook` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  textbook_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Textbook_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Textbook_FirstRow
+  ): Textbook_KeyOutput @fdc_generated(from: "Textbook", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `User` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  user_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete `Listing` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  listing_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Listing_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Listing", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `SwapOffer` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  swapOffer_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: SwapOffer_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "SwapOffer", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `SwapOfferItem` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  swapOfferItem_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: SwapOfferItem_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "SwapOfferItem", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Textbook` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  textbook_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Textbook_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Textbook", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `User` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  user_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: User_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "User", purpose: DELETE_MULTIPLE)
+}

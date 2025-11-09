@@ -1,0 +1,77 @@
+mutation CreateDemoData @transaction @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      username: "demouser1",
+      email: "demouser1@example.com",
+      passwordHash: "passwordhash1",
+      createdAt: "2024-01-01T00:00:00Z"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      username: "demouser2",
+      email: "demouser2@example.com",
+      passwordHash: "passwordhash2",
+      createdAt: "2024-01-02T00:00:00Z"
+    }
+  ])
+  textbook_insertMany(data: [
+    {
+      id: "650e8400-e29b-41d4-a716-446655440002",
+      title: "Example Textbook 1",
+      author: "Author 1",
+      edition: "1st",
+      isbn: "1234567890",
+      createdAt: "2024-01-03T00:00:00Z"
+    },
+    {
+      id: "650e8400-e29b-41d4-a716-446655440003",
+      title: "Example Textbook 2",
+      author: "Author 2",
+      edition: "2nd",
+      isbn: "0987654321",
+      createdAt: "2024-01-04T00:00:00Z"
+    }
+  ])
+  listing_insertMany(data: [
+    {
+      id: "750e8400-e29b-41d4-a716-446655440004",
+      textbookId: "650e8400-e29b-41d4-a716-446655440002",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      condition: "New",
+      status: "Available",
+      createdAt: "2024-01-05T00:00:00Z"
+    },
+    {
+      id: "750e8400-e29b-41d4-a716-446655440005",
+      textbookId: "650e8400-e29b-41d4-a716-446655440003",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      condition: "Used",
+      status: "Pending",
+      createdAt: "2024-01-06T00:00:00Z"
+    }
+  ])
+  swapOffer_insertMany(data: [
+    {
+      id: "850e8400-e29b-41d4-a716-446655440006",
+      initiatorId: "550e8400-e29b-41d4-a716-446655440000",
+      recipientId: "550e8400-e29b-41d4-a716-446655440001",
+      status: "Offered",
+      createdAt: "2024-01-07T00:00:00Z"
+    }
+  ])
+  swapOfferItem_insertMany(data: [
+    {
+      id: "950e8400-e29b-41d4-a716-446655440007",
+      swapOfferId: "850e8400-e29b-41d4-a716-446655440006",
+      listingId: "750e8400-e29b-41d4-a716-446655440004",
+      type: "Offer"
+    },
+    {
+      id: "950e8400-e29b-41d4-a716-446655440008",
+      swapOfferId: "850e8400-e29b-41d4-a716-446655440006",
+      listingId: "750e8400-e29b-41d4-a716-446655440005",
+      type: "Request"
+    }
+  ])
+}

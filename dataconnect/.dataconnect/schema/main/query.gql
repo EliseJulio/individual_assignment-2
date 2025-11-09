@@ -1,0 +1,267 @@
+extend type Query {
+  """
+  ✨ Look up a single `Listing` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  listing(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Listing_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Listing_FirstRow
+  ): Listing @fdc_generated(from: "Listing", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `SwapOffer` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  swapOffer(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: SwapOffer_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: SwapOffer_FirstRow
+  ): SwapOffer @fdc_generated(from: "SwapOffer", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `SwapOfferItem` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  swapOfferItem(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: SwapOfferItem_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: SwapOfferItem_FirstRow
+  ): SwapOfferItem @fdc_generated(from: "SwapOfferItem", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `Textbook` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  textbook(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Textbook_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Textbook_FirstRow
+  ): Textbook @fdc_generated(from: "Textbook", purpose: QUERY_SINGLE)
+  """
+  ✨ Look up a single `User` based on `id`, `key` or `first` and return selected fields (or `null` if not found).
+  """
+  user(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User @fdc_generated(from: "User", purpose: QUERY_SINGLE)
+  """
+  ✨ List `Listing` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  listings(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Listing_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Listing_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Listing_Having
+  ): [Listing!]! @fdc_generated(from: "Listing", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `SwapOffer` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  swapOffers(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: SwapOffer_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [SwapOffer_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: SwapOffer_Having
+  ): [SwapOffer!]! @fdc_generated(from: "SwapOffer", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `SwapOfferItem` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  swapOfferItems(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: SwapOfferItem_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [SwapOfferItem_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: SwapOfferItem_Having
+  ): [SwapOfferItem!]! @fdc_generated(from: "SwapOfferItem", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `Textbook` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  textbooks(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Textbook_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Textbook_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Textbook_Having
+  ): [Textbook!]! @fdc_generated(from: "Textbook", purpose: QUERY_MULTIPLE)
+  """
+  ✨ List `User` objects in the table and return selected fields, optionally filtered by `where` conditions
+  """
+  users(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: User_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [User_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: User_Having
+  ): [User!]! @fdc_generated(from: "User", purpose: QUERY_MULTIPLE)
+}

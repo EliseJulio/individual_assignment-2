@@ -1,0 +1,583 @@
+extend type Listing {
+  """
+  ✨ List `SwapOfferItem` objects in a one-to-many relationship (where `SwapOfferItem`.`listing` is this object).
+  """
+  swapOfferItems_on_listing(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: SwapOfferItem_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [SwapOfferItem_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: SwapOfferItem_Having
+  ): [SwapOfferItem!]! @fdc_generated(from: "SwapOfferItem.listing", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "Listing", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `Listing` table.
+  """
+  _count: Int! @fdc_generated(from: "Listing.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Listing` table where the `condition` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  condition_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Listing.condition", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Listing` table where the `courseCode` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  courseCode_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Listing.courseCode", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Listing` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Listing.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Listing` table where the `description` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  description_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Listing.description", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Listing` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Listing.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Listing` table where the `status` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  status_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Listing.status", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Listing` table where the `textbookId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  textbookId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Listing.textbookId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Listing` table where the `userId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  userId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Listing.userId", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `Listing` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "Listing.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `Listing` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "Listing.createdAt", purpose: QUERY_MAX)
+}
+extend type SwapOffer {
+  """
+  ✨ List `SwapOfferItem` objects in a one-to-many relationship (where `SwapOfferItem`.`swapOffer` is this object).
+  """
+  swapOfferItems_on_swapOffer(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: SwapOfferItem_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [SwapOfferItem_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: SwapOfferItem_Having
+  ): [SwapOfferItem!]! @fdc_generated(from: "SwapOfferItem.swapOffer", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "SwapOffer", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `SwapOffer` table.
+  """
+  _count: Int! @fdc_generated(from: "SwapOffer.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `SwapOffer` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "SwapOffer.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `SwapOffer` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "SwapOffer.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `SwapOffer` table where the `initiatorId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  initiatorId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "SwapOffer.initiatorId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `SwapOffer` table where the `recipientId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  recipientId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "SwapOffer.recipientId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `SwapOffer` table where the `status` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  status_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "SwapOffer.status", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `SwapOffer` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "SwapOffer.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `SwapOffer` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "SwapOffer.createdAt", purpose: QUERY_MAX)
+}
+extend type SwapOfferItem {
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "SwapOfferItem", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `SwapOfferItem` table.
+  """
+  _count: Int! @fdc_generated(from: "SwapOfferItem.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `SwapOfferItem` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "SwapOfferItem.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `SwapOfferItem` table where the `listingId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  listingId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "SwapOfferItem.listingId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `SwapOfferItem` table where the `swapOfferId` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  swapOfferId_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "SwapOfferItem.swapOfferId", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `SwapOfferItem` table where the `type` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  type_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "SwapOfferItem.type", purpose: QUERY_COUNT)
+}
+extend type Textbook {
+  """
+  ✨ List `Listing` objects in a one-to-many relationship (where `Listing`.`textbook` is this object).
+  """
+  listings_on_textbook(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Listing_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Listing_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Listing_Having
+  ): [Listing!]! @fdc_generated(from: "Listing.textbook", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "Textbook", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `Textbook` table.
+  """
+  _count: Int! @fdc_generated(from: "Textbook.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Textbook` table where the `author` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  author_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Textbook.author", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Textbook` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Textbook.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Textbook` table where the `edition` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  edition_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Textbook.edition", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Textbook` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Textbook.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Textbook` table where the `isbn` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  isbn_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Textbook.isbn", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Textbook` table where the `publisher` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  publisher_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Textbook.publisher", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Textbook` table where the `subject` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  subject_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Textbook.subject", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `Textbook` table where the `title` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  title_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "Textbook.title", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `Textbook` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "Textbook.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `Textbook` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "Textbook.createdAt", purpose: QUERY_MAX)
+}
+extend type User {
+  """
+  ✨ List `Listing` objects in a one-to-many relationship (where `Listing`.`user` is this object).
+  """
+  listings_on_user(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: Listing_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [Listing_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: Listing_Having
+  ): [Listing!]! @fdc_generated(from: "Listing.user", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `SwapOffer` objects in a one-to-many relationship (where `SwapOffer`.`initiator` is this object).
+  """
+  swapOffers_on_initiator(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: SwapOffer_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [SwapOffer_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: SwapOffer_Having
+  ): [SwapOffer!]! @fdc_generated(from: "SwapOffer.initiator", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  ✨ List `SwapOffer` objects in a one-to-many relationship (where `SwapOffer`.`recipient` is this object).
+  """
+  swapOffers_on_recipient(
+    """
+    Filter condition to narrow down the query results.
+    """
+    where: SwapOffer_Filter
+
+    """
+    Order the query results by specific fields.
+    """
+    orderBy: [SwapOffer_Order!]
+
+    """
+    Number of rows to skip before starting to return the results.
+    """
+    offset: Int
+
+    """
+    Maximum number of rows to return (defaults to 100 rows).
+    """
+    limit: Int = 100
+
+    """
+    Set to true to return distinct results.
+    """
+    distinct: Boolean = false
+
+    """
+    Filter condition to apply to the groups of aggregate queries.
+    """
+    having: SwapOffer_Having
+  ): [SwapOffer!]! @fdc_generated(from: "SwapOffer.recipient", purpose: QUERY_MULTIPLE_ONE_TO_MANY)
+  """
+  Implicit metadata field that cannot be written. It provides extra information about query results.
+  """
+  _metadata: _Metadata @fdc_generated(from: "User", purpose: METADATA_FIELD)
+  """
+  ✨ Count the number of rows in the `User` table.
+  """
+  _count: Int! @fdc_generated(from: "User.", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `createdAt` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  createdAt_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.createdAt", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `displayName` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  displayName_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.displayName", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `email` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  email_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.email", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `id` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  id_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.id", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `passwordHash` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  passwordHash_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.passwordHash", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `photoUrl` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  photoUrl_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.photoUrl", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `university` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  university_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.university", purpose: QUERY_COUNT)
+  """
+  ✨ Count the number of rows in the `User` table where the `username` field is non-null. Pass the `distinct` argument to instead count the number of distinct values.
+  """
+  username_count(
+    """
+    Set to true to count the number of distinct values.
+    """
+    distinct: Boolean = false
+  ): Int! @fdc_generated(from: "User.username", purpose: QUERY_COUNT)
+  """
+  ✨ Minimum of the `createdAt` field in the `User` table.
+  """
+  createdAt_min: Timestamp @fdc_generated(from: "User.createdAt", purpose: QUERY_MIN)
+  """
+  ✨ Maximum of the `createdAt` field in the `User` table.
+  """
+  createdAt_max: Timestamp @fdc_generated(from: "User.createdAt", purpose: QUERY_MAX)
+}

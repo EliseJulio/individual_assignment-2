@@ -1,0 +1,42 @@
+mutation CreateUser @auth(level: USER) {
+  user_insert(data: {
+    username: "newuser",
+    email: "newuser@example.com",
+    passwordHash: "somehash",
+    createdAt_expr: "request.time"
+  })
+}
+
+query ListTextbooks @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  textbooks {
+    id
+    title
+    author
+    edition
+    isbn
+  }
+}
+
+mutation UpdateListingStatus($id: UUID!, $status: String!) @auth(level: USER) {
+  listing_update(
+    id: $id,
+    data: {
+      status: $status
+    }
+  ) {
+    id
+  }
+}
+
+query ListMyListings @auth(level: USER) {
+  listings(where: {userId: {eq_expr: "auth.uid"}}) {
+    id
+    textbook {
+      title
+      author
+    }
+    condition
+    description
+    status
+  }
+}

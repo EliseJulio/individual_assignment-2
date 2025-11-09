@@ -1,0 +1,42 @@
+type User @table {
+  username: String!
+  email: String!
+  passwordHash: String!
+  createdAt: Timestamp!
+  displayName: String
+  university: String
+  photoUrl: String
+}
+
+type Textbook @table {
+  title: String!
+  author: String!
+  edition: String!
+  isbn: String!
+  createdAt: Timestamp!
+  subject: String
+  publisher: String
+}
+
+type Listing @table {
+  user: User!
+  textbook: Textbook!
+  condition: String!
+  status: String!
+  createdAt: Timestamp!
+  description: String
+  courseCode: String
+}
+
+type SwapOffer @table {
+  initiator: User!
+  recipient: User!
+  status: String!
+  createdAt: Timestamp!
+}
+
+type SwapOfferItem @table {
+  swapOffer: SwapOffer!
+  listing: Listing!
+  type: String!
+}
