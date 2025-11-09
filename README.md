@@ -130,8 +130,8 @@ chats: {
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd bookswap_app
+   git clone 
+   cd 
    ```
 
 2. **Install dependencies**
