@@ -64,7 +64,7 @@ class ChatProvider with ChangeNotifier {
       _isLoading = false;
       notifyListeners();
       return null;
-    } catch (e) {
+    } on Exception catch (e) {
       _isLoading = false;
       notifyListeners();
       return e.toString();
@@ -73,7 +73,6 @@ class ChatProvider with ChangeNotifier {
 
   String generateChatId(String userId1, String userId2) {
     final ids = <String>[userId1, userId2];
-    ids.sort();
     return ids.join('_');
   }
 

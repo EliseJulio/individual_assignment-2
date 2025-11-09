@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "123456789012",
-    "project_id": "bookswap-app-demo",
-    "storage_bucket": "bookswap-app-demo.appspot.com"
+    "project_number": "69373787137",
+    "project_id": "individual-assignment-2-a9662",
+    "storage_bucket": "individual-assignment-2-a9662.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:123456789012:android:abcdef123456789",
+        "mobilesdk_app_id": "1:69373787137:android:ba53b700efa071f0e39400",
         "android_client_info": {
           "package_name": "com.example.bookswap_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "123456789012-abcdefghijklmnopqrstuvwxyz123456.apps.googleusercontent.com",
+          "client_id": "69373787137-abcdefghijklmnopqrstuvwxyz123456.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDemoKeyForBookSwapAppAndroid123456789"
+          "current_key": "AIzaSyCnV1x7hMbvn4stnLK9yQROqz3poad_jeA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "123456789012-abcdefghijklmnopqrstuvwxyz123456.apps.googleusercontent.com",
+              "client_id": "69373787137-abcdefghijklmnopqrstuvwxyz123456.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

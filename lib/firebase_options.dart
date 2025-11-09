@@ -32,37 +32,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'your-actual-web-api-key',
-    appId: 'your-actual-web-app-id',
-    messagingSenderId: 'your-actual-sender-id',
-    projectId: 'your-actual-project-id',
-    authDomain: 'your-actual-project-id.firebaseapp.com',
-    storageBucket: 'your-actual-project-id.appspot.com',
+    apiKey: 'AIzaSyCnV1x7hMbvn4stnLK9yQROqz3poad_jeA',
+    appId: '1:69373787137:web:ba53b700efa071f0e39400',
+    messagingSenderId: '69373787137',
+    projectId: 'individual-assignment-2-a9662',
+    authDomain: 'individual-assignment-2-a9662.firebaseapp.com',
+    storageBucket: 'individual-assignment-2-a9662.firebasestorage.app',
+    measurementId: 'G-HJ727NY7D1',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDemoKeyForBookSwapAppAndroid123456789',
-    appId: '1:123456789012:android:abcdef123456789',
-    messagingSenderId: '123456789012',
-    projectId: 'bookswap-app-demo',
-    storageBucket: 'bookswap-app-demo.appspot.com',
+    apiKey: 'AIzaSyCnV1x7hMbvn4stnLK9yQROqz3poad_jeA',
+    appId: '1:69373787137:android:ba53b700efa071f0e39400',
+    messagingSenderId: '69373787137',
+    projectId: 'individual-assignment-2-a9662',
+    storageBucket: 'individual-assignment-2-a9662.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDemoKeyForBookSwapAppIOS123456789',
-    appId: '1:123456789012:ios:abcdef123456789',
-    messagingSenderId: '123456789012',
-    projectId: 'bookswap-app-demo',
-    storageBucket: 'bookswap-app-demo.appspot.com',
+    apiKey: 'AIzaSyCnV1x7hMbvn4stnLK9yQROqz3poad_jeA',
+    appId: '1:69373787137:ios:ba53b700efa071f0e39400',
+    messagingSenderId: '69373787137',
+    projectId: 'individual-assignment-2-a9662',
+    storageBucket: 'individual-assignment-2-a9662.firebasestorage.app',
     iosBundleId: 'com.example.bookswapApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDemoKeyForBookSwapAppMacOS123456789',
-    appId: '1:123456789012:macos:abcdef123456789',
-    messagingSenderId: '123456789012',
-    projectId: 'bookswap-app-demo',
-    storageBucket: 'bookswap-app-demo.appspot.com',
+    apiKey: 'AIzaSyCnV1x7hMbvn4stnLK9yQROqz3poad_jeA',
+    appId: '1:69373787137:macos:ba53b700efa071f0e39400',
+    messagingSenderId: '69373787137',
+    projectId: 'individual-assignment-2-a9662',
+    storageBucket: 'individual-assignment-2-a9662.firebasestorage.app',
     iosBundleId: 'com.example.bookswapApp',
   );
 }
