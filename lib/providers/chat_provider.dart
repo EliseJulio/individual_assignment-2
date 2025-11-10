@@ -60,6 +60,15 @@ class ChatProvider with ChangeNotifier {
         'lastMessage': message,
         'lastMessageTime': DateTime.now().millisecondsSinceEpoch,
       }, SetOptions(merge: true));
+      
+      // Ensure user documents exist for email lookup
+      await _firestore.collection('users').doc(user.uid).set({
+        'email': user.email,
+      }, SetOptions(merge: true));
+      
+      await _firestore.collection('users').doc(receiverId).set({
+        'email': receiverId, // fallback to ID if email not available
+      }, SetOptions(merge: true));
 
       _isLoading = false;
       notifyListeners();
@@ -86,12 +95,34 @@ class ChatProvider with ChangeNotifier {
           .where('participants', arrayContains: user.uid)
           .get();
 
-      return snapshot.docs
-          .map((doc) => {
-                'id': doc.id,
-                ...doc.data(),
-              })
-          .toList();
+      final chats = <Map<String, dynamic>>[];
+      
+      for (final doc in snapshot.docs) {
+        final data = doc.data();
+        final participants = List<String>.from(data['participants'] ?? []);
+        final otherUserId = participants.firstWhere((id) => id != user.uid);
+        
+        // Get other user's email
+        String otherUserEmail = 'Unknown User';
+        try {
+          final userDoc = await _firestore.collection('users').doc(otherUserId).get();
+          if (userDoc.exists) {
+            otherUserEmail = userDoc.data()?['email'] ?? otherUserId;
+          } else {
+            otherUserEmail = otherUserId;
+          }
+        } catch (e) {
+          otherUserEmail = otherUserId;
+        }
+        
+        chats.add({
+          'id': doc.id,
+          'otherUserEmail': otherUserEmail,
+          ...data,
+        });
+      }
+      
+      return chats;
     } on FirebaseException {
       return [];
     }

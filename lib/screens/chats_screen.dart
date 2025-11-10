@@ -60,7 +60,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                     leading: const CircleAvatar(
                       child: Icon(Icons.person),
                     ),
-                    title: const Text('Chat with User'),
+                    title: Text(chat['otherUserEmail'] ?? 'Unknown User'),
                     subtitle: Text(chat['lastMessage'] ?? 'No messages yet'),
                     trailing: chat['lastMessageTime'] != null
                         ? Text(_formatTime(chat['lastMessageTime']))
