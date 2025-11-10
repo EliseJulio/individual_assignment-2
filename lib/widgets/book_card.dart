@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/book.dart';
+import '../widgets/safe_image.dart';
 
 class BookCard extends StatelessWidget {
   const BookCard({
@@ -29,16 +30,10 @@ class BookCard extends StatelessWidget {
                   const BorderRadius.vertical(top: Radius.circular(12)),
               child: AspectRatio(
                 aspectRatio: 16 / 9,
-                child: Image.network(
-                  book.imageUrl,
-                  fit: BoxFit.cover,
+                child: SafeImage(
+                  imageUrl: book.imageUrl,
                   width: double.infinity,
-                  errorBuilder: (context, error, stackTrace) => Container(
-                    color: Colors.grey[300],
-                    child: const Center(
-                      child: Icon(Icons.book, size: 50, color: Colors.grey),
-                    ),
-                  ),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

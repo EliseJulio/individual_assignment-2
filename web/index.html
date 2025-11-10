@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <base href="/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -11,24 +10,30 @@
   <meta name="apple-mobile-web-app-title" content="BookSwap">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
   <link rel="icon" type="image/png" href="favicon.png"/>
-  <title>BookSwap</title>
   <link rel="manifest" href="manifest.json">
+  <title>BookSwap</title>
 
-  <script src="flutter.js" defer></script>
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js?v=null');
-      });
-    }
-  </script>
+  <script src="/build/web/flutter.js" defer></script>
 </head>
 <body>
   <script>
+    window._flutter = window._flutter || {};
+    window._flutter.buildConfig = {
+      builds: [
+        {
+          entrypoint: "main.dart.js",
+          renderer: "canvaskit",  
+          dartEntrypointArgs: [],
+          releaseMode: true
+        }
+      ]
+    };
+
     window.addEventListener('load', function() {
       _flutter.loader.load({
-        serviceWorker: { serviceWorkerVersion: 'null' },
+        serviceWorker: {
+          serviceWorkerVersion: 'null' 
+        },
         onEntrypointLoaded: function(engineInitializer) {
           engineInitializer.initializeEngine().then(function(appRunner) {
             appRunner.runApp();
@@ -36,6 +41,14 @@
         }
       });
     });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('flutter_service_worker.js?v=null')
+          .then(() => console.log('Service Worker registered'))
+          .catch((err) => console.warn('Service Worker registration failed:', err));
+      });
+    }
   </script>
 </body>
 </html>

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../models/book.dart';
 import '../providers/book_provider.dart';
+import '../widgets/safe_image.dart';
 
 class AddBookScreen extends StatefulWidget {
   const AddBookScreen({super.key, this.book});
@@ -92,36 +93,30 @@ class _AddBookScreenState extends State<AddBookScreen> {
               TextFormField(
                 controller: _imageUrlController,
                 decoration: const InputDecoration(
-                  labelText: 'Image URL',
+                  labelText: 'Image URL (Optional)',
                   border: OutlineInputBorder(),
-                  hintText: 'https://example.com/book-cover.jpg',
+                  hintText: 'Leave empty for placeholder',
                 ),
-                validator: (value) {
-                  if (value?.isEmpty ?? true) return 'Please enter image URL';
-                  return null;
-                },
+                onChanged: (value) => setState(() {}),
               ),
               const SizedBox(height: 24),
-              if (_imageUrlController.text.isNotEmpty)
-                Container(
-                  height: 200,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
-                      _imageUrlController.text,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) =>
-                          const Center(
-                        child: Icon(Icons.error, size: 50, color: Colors.red),
-                      ),
-                    ),
+              Container(
+                height: 200,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: SafeImage(
+                    imageUrl: _imageUrlController.text,
+                    width: double.infinity,
+                    height: 200,
+                    fit: BoxFit.cover,
                   ),
                 ),
+              ),
               const SizedBox(height: 24),
               Consumer<BookProvider>(
                 builder: (context, bookProvider, child) => SizedBox(
