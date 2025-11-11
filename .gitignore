@@ -78,3 +78,7 @@ build/
 /ios/**/DerivedData/
 /ios/**/Icon?
 /ios/**/Pods/
+
+FINAL_CHECKLIST.md
+FIREBASE_SETUP.md
+PROJECT_SUMMARY.md
