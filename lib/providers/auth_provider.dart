@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,7 @@ class AuthProvider with ChangeNotifier {
     });
   }
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   User? _user;
   bool _isLoading = false;
 
@@ -16,7 +18,7 @@ class AuthProvider with ChangeNotifier {
   bool get isLoading => _isLoading;
   bool get isAuthenticated => _user != null;
 
-  Future<String?> signUp(String email, String password) async {
+  Future<String?> signUp(String email, String password, String name) async {
     try {
       _isLoading = true;
       notifyListeners();
@@ -28,6 +30,15 @@ class AuthProvider with ChangeNotifier {
 
       await result.user?.sendEmailVerification();
       _user = result.user;
+      
+      // Save user profile to Firestore
+      if (_user != null) {
+        await _firestore.collection('users').doc(_user!.uid).set({
+          'email': email,
+          'name': name,
+          'createdAt': DateTime.now().millisecondsSinceEpoch,
+        });
+      }
 
       _isLoading = false;
       notifyListeners();

@@ -13,6 +13,7 @@ class _AuthScreenState extends State<AuthScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _nameController = TextEditingController();
   bool _isLogin = true;
 
   @override
@@ -52,6 +53,26 @@ class _AuthScreenState extends State<AuthScreen> {
                               ),
                         ),
                         const SizedBox(height: 32),
+                        if (!_isLogin)
+                          Column(
+                            children: [
+                              TextFormField(
+                                controller: _nameController,
+                                decoration: const InputDecoration(
+                                  labelText: 'Full Name',
+                                  prefixIcon: Icon(Icons.person),
+                                  border: OutlineInputBorder(),
+                                ),
+                                validator: (value) {
+                                  if (!_isLogin && (value?.isEmpty ?? true)) {
+                                    return 'Please enter your name';
+                                  }
+                                  return null;
+                                },
+                              ),
+                              const SizedBox(height: 16),
+                            ],
+                          ),
                         TextFormField(
                           controller: _emailController,
                           decoration: const InputDecoration(
@@ -135,7 +156,7 @@ class _AuthScreenState extends State<AuthScreen> {
           _emailController.text, _passwordController.text);
     } else {
       error = await authProvider.signUp(
-          _emailController.text, _passwordController.text);
+          _emailController.text, _passwordController.text, _nameController.text);
     }
 
     if (error != null && mounted) {
@@ -149,6 +170,7 @@ class _AuthScreenState extends State<AuthScreen> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _nameController.dispose();
     super.dispose();
   }
 }

@@ -102,22 +102,22 @@ class ChatProvider with ChangeNotifier {
         final participants = List<String>.from(data['participants'] ?? []);
         final otherUserId = participants.firstWhere((id) => id != user.uid);
         
-        // Get other user's email
-        String otherUserEmail = 'Unknown User';
+        // Get other user's name
+        String otherUserName = 'Unknown User';
         try {
           final userDoc = await _firestore.collection('users').doc(otherUserId).get();
           if (userDoc.exists) {
-            otherUserEmail = userDoc.data()?['email'] ?? otherUserId;
+            otherUserName = userDoc.data()?['name'] ?? userDoc.data()?['email'] ?? otherUserId;
           } else {
-            otherUserEmail = otherUserId;
+            otherUserName = otherUserId;
           }
         } catch (e) {
-          otherUserEmail = otherUserId;
+          otherUserName = otherUserId;
         }
         
         chats.add({
           'id': doc.id,
-          'otherUserEmail': otherUserEmail,
+          'otherUserName': otherUserName,
           ...data,
         });
       }

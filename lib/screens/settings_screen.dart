@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart' as auth;
+import 'profile_setup_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -149,6 +151,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     title: const Text('Version'),
                     subtitle: const Text('1.0.0'),
                     onTap: () {},
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.edit),
+                    title: const Text('Update Profile'),
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfileSetupScreen(),
+                      ),
+                    ),
                   ),
                   ListTile(
                     leading: const Icon(Icons.help),
