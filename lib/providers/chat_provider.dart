@@ -21,10 +21,50 @@ class ChatProvider with ChangeNotifier {
         .collection('messages')
         .orderBy('timestamp', descending: true)
         .snapshots()
-        .listen((snapshot) {
-      _messages = snapshot.docs
-          .map((doc) => ChatMessage.fromMap(doc.data(), doc.id))
-          .toList();
+        .listen((snapshot) async {
+      final messages = <ChatMessage>[];
+      
+      for (final doc in snapshot.docs) {
+        final data = doc.data();
+        var message = ChatMessage.fromMap(data, doc.id);
+        
+        // If no sender name, try to fetch it
+        if (message.senderName == null) {
+          try {
+            final userDoc = await _firestore.collection('users').doc(message.senderId).get();
+            if (userDoc.exists) {
+              final userData = userDoc.data();
+              final senderName = userData?['name'] ?? userData?['email']?.split('@')[0] ?? message.senderEmail.split('@')[0];
+              message = ChatMessage(
+                id: message.id,
+                senderId: message.senderId,
+                senderEmail: message.senderEmail,
+                receiverId: message.receiverId,
+                message: message.message,
+                timestamp: message.timestamp,
+                chatId: message.chatId,
+                senderName: senderName,
+              );
+            }
+          } catch (e) {
+            // Use email prefix as fallback
+            message = ChatMessage(
+              id: message.id,
+              senderId: message.senderId,
+              senderEmail: message.senderEmail,
+              receiverId: message.receiverId,
+              message: message.message,
+              timestamp: message.timestamp,
+              chatId: message.chatId,
+              senderName: message.senderEmail.split('@')[0],
+            );
+          }
+        }
+        
+        messages.add(message);
+      }
+      
+      _messages = messages;
       notifyListeners();
     });
   }
@@ -38,6 +78,15 @@ class ChatProvider with ChangeNotifier {
       final user = _auth.currentUser;
       if (user == null) return 'User not authenticated';
 
+      // Get sender name
+      String? senderName;
+      try {
+        final userDoc = await _firestore.collection('users').doc(user.uid).get();
+        senderName = userDoc.data()?['name'] ?? user.email?.split('@')[0];
+      } catch (e) {
+        senderName = user.email?.split('@')[0];
+      }
+
       final chatMessage = ChatMessage(
         id: '',
         senderId: user.uid,
@@ -46,6 +95,7 @@ class ChatProvider with ChangeNotifier {
         message: message,
         timestamp: DateTime.now(),
         chatId: chatId,
+        senderName: senderName,
       );
 
       await _firestore
@@ -59,15 +109,6 @@ class ChatProvider with ChangeNotifier {
         'participants': [user.uid, receiverId],
         'lastMessage': message,
         'lastMessageTime': DateTime.now().millisecondsSinceEpoch,
-      }, SetOptions(merge: true));
-      
-      // Ensure user documents exist for email lookup
-      await _firestore.collection('users').doc(user.uid).set({
-        'email': user.email,
-      }, SetOptions(merge: true));
-      
-      await _firestore.collection('users').doc(receiverId).set({
-        'email': receiverId, // fallback to ID if email not available
       }, SetOptions(merge: true));
 
       _isLoading = false;
@@ -107,7 +148,8 @@ class ChatProvider with ChangeNotifier {
         try {
           final userDoc = await _firestore.collection('users').doc(otherUserId).get();
           if (userDoc.exists) {
-            otherUserName = userDoc.data()?['name'] ?? userDoc.data()?['email'] ?? otherUserId;
+            final userData = userDoc.data();
+            otherUserName = userData?['name'] ?? userData?['email']?.split('@')[0] ?? otherUserId;
           } else {
             otherUserName = otherUserId;
           }

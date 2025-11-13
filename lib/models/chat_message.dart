@@ -7,6 +7,7 @@ class ChatMessage {
     required this.message,
     required this.timestamp,
     required this.chatId,
+    this.senderName,
   });
 
   factory ChatMessage.fromMap(Map<String, dynamic> map, String id) =>
@@ -18,6 +19,7 @@ class ChatMessage {
         message: map['message'] ?? '',
         timestamp: DateTime.fromMillisecondsSinceEpoch(map['timestamp'] ?? 0),
         chatId: map['chatId'] ?? '',
+        senderName: map['senderName'],
       );
   final String id;
   final String senderId;
@@ -26,6 +28,7 @@ class ChatMessage {
   final String message;
   final DateTime timestamp;
   final String chatId;
+  final String? senderName;
 
   Map<String, dynamic> toMap() => {
         'senderId': senderId,
@@ -34,5 +37,6 @@ class ChatMessage {
         'message': message,
         'timestamp': timestamp.millisecondsSinceEpoch,
         'chatId': chatId,
+        if (senderName != null) 'senderName': senderName,
       };
 }

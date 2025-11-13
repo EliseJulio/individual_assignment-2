@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +32,12 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text('Chat'),
+          title: FutureBuilder<String>(
+            future: _getOtherUserName(),
+            builder: (context, snapshot) {
+              return Text(snapshot.data ?? 'Chat');
+            },
+          ),
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
         ),
@@ -72,6 +78,17 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
+                              if (!isMe && message.senderName != null) ...[
+                                Text(
+                                  message.senderName!,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey[600],
+                                  ),
+                                ),
+                                const SizedBox(height: 2),
+                              ],
                               Text(
                                 message.message,
                                 style: TextStyle(
@@ -163,6 +180,23 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
 
   String _formatTime(DateTime dateTime) =>
       '${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}';
+
+  Future<String> _getOtherUserName() async {
+    try {
+      final userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(widget.otherUserId)
+          .get();
+      
+      if (userDoc.exists) {
+        final userData = userDoc.data();
+        return userData?['name'] ?? userData?['email']?.split('@')[0] ?? 'Unknown User';
+      }
+      return 'Unknown User';
+    } catch (e) {
+      return 'Unknown User';
+    }
+  }
 
   @override
   void dispose() {

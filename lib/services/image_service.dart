@@ -12,14 +12,12 @@ class ImageService {
     'https://picsum.photos/400/600?random=10',
   ];
 
-  static String getRandomBookImage() {
-    return _defaultBookImages[DateTime.now().millisecond % _defaultBookImages.length];
-  }
+  static String getRandomBookImage() => _defaultBookImages[
+      DateTime.now().millisecond % _defaultBookImages.length];
 
-  static bool isValidImageUrl(String url) {
-    return Uri.tryParse(url) != null && 
-           (url.startsWith('http://') || url.startsWith('https://'));
-  }
+  static bool isValidImageUrl(String url) =>
+      Uri.tryParse(url) != null &&
+      (url.startsWith('http://') || url.startsWith('https://'));
 
   static String sanitizeImageUrl(String url) {
     if (url.isEmpty || !isValidImageUrl(url)) {

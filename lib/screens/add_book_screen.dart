@@ -113,7 +113,6 @@ class _AddBookScreenState extends State<AddBookScreen> {
                     imageUrl: _imageUrlController.text,
                     width: double.infinity,
                     height: 200,
-                    fit: BoxFit.cover,
                   ),
                 ),
               ),

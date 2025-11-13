@@ -52,11 +52,12 @@ class BookProvider with ChangeNotifier {
 
       final user = _auth.currentUser;
       if (user == null) return 'User not authenticated';
-      
+
       // Get user name from Firestore
-      String ownerName = user.email ?? '';
+      var ownerName = user.email ?? '';
       try {
-        final userDoc = await _firestore.collection('users').doc(user.uid).get();
+        final userDoc =
+            await _firestore.collection('users').doc(user.uid).get();
         if (userDoc.exists) {
           ownerName = userDoc.data()?['name'] ?? user.email ?? '';
         }

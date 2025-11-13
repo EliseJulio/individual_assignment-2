@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -39,7 +38,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   children: [
                     const Text(
                       'Profile Information',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 16),
                     Row(
@@ -55,27 +55,37 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             children: [
                               Text(
                                 user?.email ?? 'No email',
-                                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500),
                               ),
                               const SizedBox(height: 4),
                               Text(
                                 'User ID: ${user?.uid ?? 'Unknown'}',
-                                style: const TextStyle(fontSize: 12, color: Colors.grey),
+                                style: const TextStyle(
+                                    fontSize: 12, color: Colors.grey),
                               ),
                               const SizedBox(height: 4),
                               Row(
                                 children: [
                                   Icon(
-                                    user?.emailVerified == true ? Icons.verified : Icons.warning,
+                                    user?.emailVerified == true
+                                        ? Icons.verified
+                                        : Icons.warning,
                                     size: 16,
-                                    color: user?.emailVerified == true ? Colors.green : Colors.orange,
+                                    color: user?.emailVerified == true
+                                        ? Colors.green
+                                        : Colors.orange,
                                   ),
                                   const SizedBox(width: 4),
                                   Text(
-                                    user?.emailVerified == true ? 'Verified' : 'Not Verified',
+                                    user?.emailVerified == true
+                                        ? 'Verified'
+                                        : 'Not Verified',
                                     style: TextStyle(
                                       fontSize: 12,
-                                      color: user?.emailVerified == true ? Colors.green : Colors.orange,
+                                      color: user?.emailVerified == true
+                                          ? Colors.green
+                                          : Colors.orange,
                                     ),
                                   ),
                                 ],
@@ -103,13 +113,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'Notification Preferences',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
                   SwitchListTile(
                     title: const Text('Push Notifications'),
-                    subtitle: const Text('Receive notifications for swap offers'),
+                    subtitle:
+                        const Text('Receive notifications for swap offers'),
                     value: _notificationsEnabled,
                     onChanged: (value) {
                       setState(() => _notificationsEnabled = value);
@@ -117,7 +129,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   SwitchListTile(
                     title: const Text('Email Notifications'),
-                    subtitle: const Text('Receive email updates for important events'),
+                    subtitle: const Text(
+                        'Receive email updates for important events'),
                     value: _emailNotifications,
                     onChanged: (value) {
                       setState(() => _emailNotifications = value);
@@ -142,7 +155,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'App Information',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
