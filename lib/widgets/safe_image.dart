@@ -20,33 +20,25 @@ class SafeImage extends StatelessWidget {
       return _buildPlaceholder();
     }
 
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Image.network(
-        imageUrl,
-        width: width,
-        height: height,
-        fit: fit,
-        loadingBuilder: (context, child, loadingProgress) {
-          if (loadingProgress == null) return child;
-          return _buildPlaceholder();
-        },
-        errorBuilder: (context, error, stackTrace) => _buildPlaceholder(),
-      ),
+    return Image.network(
+      imageUrl,
+      width: width,
+      height: height,
+      fit: fit,
+      loadingBuilder: (context, child, loadingProgress) {
+        if (loadingProgress == null) return child;
+        return _buildPlaceholder();
+      },
+      errorBuilder: (context, error, stackTrace) => _buildPlaceholder(),
     );
   }
 
-  Widget _buildPlaceholder() {
-    return Container(
-      width: width,
-      height: height,
-      decoration: BoxDecoration(
+  Widget _buildPlaceholder() => Container(
+        width: width,
+        height: height,
         color: Colors.grey[300],
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: const Center(
-        child: Icon(Icons.book, size: 50, color: Colors.grey),
-      ),
-    );
-  }
+        child: const Center(
+          child: Icon(Icons.book, size: 50, color: Colors.grey),
+        ),
+      );
 }
